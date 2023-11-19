@@ -16,7 +16,7 @@ class _StartScreenState extends State<StartScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text("Start Screen"),
-        backgroundColor: Colors.teal,
+        backgroundColor: Colors.white,
       ),
       body: const Center(
         child: Column(
@@ -24,11 +24,11 @@ class _StartScreenState extends State<StartScreen> {
           children: [
             ButtonLogin(
               route: secondScreen,
-              buttonText: "Animal Deaths",
+              buttonText: buttonTextAnimal,
             ),
             ButtonLogin(
               route: thirdScreen,
-              buttonText: "Go to Third",
+              buttonText: buttonTextVegan,
             ),
           ],
         ),

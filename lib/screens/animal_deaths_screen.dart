@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:navigation/constants/routes.dart';
 import 'dart:async';
-
 import 'package:navigation/widgets/widget.dart';
 
 class AnimalDeathScreen extends StatefulWidget {
   const AnimalDeathScreen({Key? key}) : super(key: key);
 
   @override
-  _AnimalDeathScreenState createState() => _AnimalDeathScreenState();
+  AnimalDeathScreenState createState() => AnimalDeathScreenState();
 }
 
-class _AnimalDeathScreenState extends State<AnimalDeathScreen> {
+class AnimalDeathScreenState extends State<AnimalDeathScreen> {
   AnimalDeathCounter animalDeathCounter = AnimalDeathCounter();
 
   @override
@@ -38,7 +37,7 @@ class _AnimalDeathScreenState extends State<AnimalDeathScreen> {
           actions: const [
             ButtonLogin(
               route: thirdScreen,
-              buttonText: "Third",
+              buttonText: buttonTextVegan,
             ),
           ]),
       body: SingleChildScrollView(
@@ -47,17 +46,18 @@ class _AnimalDeathScreenState extends State<AnimalDeathScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                'Live Animal Death Statistics:',
+                'Animal deaths since you oppened this page',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 20),
               // Display statistics for each category dynamically using GridView
               GridView.builder(
                 shrinkWrap: true,
+                physics: const ClampingScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2, // Two columns
-                  crossAxisSpacing: 8.0,
-                  mainAxisSpacing: 8.0,
+                  crossAxisSpacing: 2.0,
+                  mainAxisSpacing: 2.0,
                 ),
                 itemCount: animalsKilledPerYear.keys.length,
                 itemBuilder: (context, index) {
@@ -66,6 +66,7 @@ class _AnimalDeathScreenState extends State<AnimalDeathScreen> {
                 },
               ),
               const SizedBox(height: 10),
+              const Text(" data from: https://considerveganism.com/counter/"),
               // ButtonLogin(
               //   route: startScreen,
               //   buttonText: "Start",
@@ -100,10 +101,10 @@ class LiveStatisticWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _LiveStatisticWidgetState createState() => _LiveStatisticWidgetState();
+  LiveStatisticWidgetState createState() => LiveStatisticWidgetState();
 }
 
-class _LiveStatisticWidgetState extends State<LiveStatisticWidget> {
+class LiveStatisticWidgetState extends State<LiveStatisticWidget> {
   late StreamSubscription<int> _subscription;
   int? data;
 
@@ -121,6 +122,7 @@ class _LiveStatisticWidgetState extends State<LiveStatisticWidget> {
     });
   }
 
+  // @overridephysics: ClampingScrollPhysics()
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -134,7 +136,7 @@ class _LiveStatisticWidgetState extends State<LiveStatisticWidget> {
             ),
             const SizedBox(height: 8.0),
             Text(
-              data == null ? 'Loading...' : '$data animals killed',
+              data == null ? 'Loading...' : '$data',
               style: const TextStyle(fontSize: 14),
             ),
           ],
@@ -157,7 +159,7 @@ class AnimalDeathCounter {
 
   int count = 0;
 
-  Map<String, StreamController<int>> _categoryControllers = {};
+  final Map<String, StreamController<int>> _categoryControllers = {};
 
   AnimalDeathCounter() {
     for (String category in animalsKilledPerYear.keys) {
@@ -200,9 +202,9 @@ class AnimalDeathCounter {
 }
 
 const Map<String, double> animalsKilledPerYear = {
-  "wild_caught_fish": 970000000000,
+  "wild caught fish": 970000000000,
   "chickens": 61171973510,
-  "farmed_fish": 38000000000,
+  "farmed fish": 38000000000,
   "ducks": 2887594480,
   "pigs": 1451856889.38,
   "rabbits": 1171578000,
@@ -212,10 +214,10 @@ const Map<String, double> animalsKilledPerYear = {
   "goats": 438320370.99,
   "cattle": 298799160.08,
   "rodents": 70371000,
-  "other_birds": 59656000,
-  //   "buffalo": 25798819,
-  //   "horses": 4863367,
-  //   "donkeys": 3213400,
-  //   "camels": 3243266.03,
+  "other birds": 59656000,
+  "buffalo": 25798819,
+  "horses": 4863367,
+  "donkeys": 3213400,
+  "camels": 3243266.03,
   // Add other animal categories here
 };

@@ -1,11 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:navigation/animal_deaths_year.dart';
+import 'package:navigation/screens/animal_deaths_screen.dart';
 import 'package:navigation/constants/routes.dart';
-// import 'package:navigation/screens/second_screen.dart';
 import 'package:navigation/screens/start_screen.dart';
-import 'package:navigation/screens/third_screen.dart';
+import 'package:navigation/screens/vegan_birthday_screen.dart';
 import 'package:sizer/sizer.dart';
 
 void main() {
@@ -32,7 +31,7 @@ class MyApp extends StatelessWidget {
           routes: {
             startScreen: (context) => const StartScreen(),
             secondScreen: (context) => const AnimalDeathScreen(),
-            thirdScreen: (context) => const ThirdScreen(),
+            thirdScreen: (context) => VeganBirthdayScreen(),
           },
         );
       },
