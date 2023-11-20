@@ -1,6 +1,6 @@
 # navigation
 
-A Flutter project developed as part of the course ["App-Entwicklung mit Flutter & Dart für Android & iOS"](https://www.cimdata.de/weiterbildung/app-entwicklung-mit-flutter-dart-fuer-android-ios/) of Cimdata with the mentoring of Nico //.
+A Flutter project developed as part of the course ["App-Entwicklung mit Flutter & Dart für Android & iOS"](https://www.cimdata.de/weiterbildung/app-entwicklung-mit-flutter-dart-fuer-android-ios/) of Cimdata with the mentoring of Nico Heller.
 
 
 
